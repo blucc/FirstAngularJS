@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <title></title>
+  <script src="angular.min.js"></script>
+  <script src="application.js"></script>
+  <link rel="stylesheet" type="text/css" href="application.css">
+  
+</head>
+<body>
+  
+<div ng-app="todo" ng-controller="page"> <a href="" ng-click="ui.current(1);">Shopping</a>
+ <a href="" ng-click="ui.current(2);">Business</a> <a href="" ng-click="ui.current(3);">All</a>
+
+    <hr/>
+    <div ng-controller="tabTodo" ng-show="ui.isCurrent(1);">Shopping
+        <ul ng-repeat="data in todoData | filter:{list:'shopping'}">
+            <li ng-class="{ 'done': data.complete }">{{data.name}}</li>
+        </ul>
+    </div>
+    <div ng-controller="tabTodo" ng-show="ui.isCurrent(2);">Business
+        <ul ng-repeat="data in todoData | filter:{list:'business'}">
+            <li ng-class="{ 'done': data.complete }">{{data.name}}</li>
+        </ul>
+    </div>
+    <div ng-controller="tabTodo" ng-show="ui.isCurrent(3);">All
+        <ul ng-repeat="data in todoData | filter:{complete:'false'}">
+            <li ng-class="{ 'done': data.complete }">{{data.name}}</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
